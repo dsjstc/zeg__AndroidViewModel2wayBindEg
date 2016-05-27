@@ -36,8 +36,10 @@ public class MyViewModel extends BaseObservable {
         notifyPropertyChanged(ca.thundersun.myapplication.BR.stringVM);
     }
 
-    @Bindable
-    public float getBucks() {
+    // Note that the float domain does not get updated in real time.
+    // I couldn't figure out any way to do that without writing a custom
+    // watcher class for each domain object that needs modification.
+    @Bindable public float getBucks() {
         return domain.getDomainBucks();
     }
     public void setBucks(float b) {
