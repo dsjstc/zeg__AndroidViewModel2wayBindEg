@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable name="auth" type="ca.thundersun.atixpos.ModelAuth"/>
+        <import type="android.text.InputType" />
+    </data>
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/authscreen"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ActivityMain"
+        android:gravity="center_vertical|center_horizontal"
+        >
+
+        <TableLayout
+            android:id="@+id/groupLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="@{!auth.demomode}"
+            >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Username: "
+                    android:id="@+id/textView27"
+                    android:layout_alignBaseline="@+id/editTextUsername"
+                    android:layout_alignBottom="@+id/editTextUsername"
+                    android:layout_alignParentStart="true"/>
+
+                <AutoCompleteTextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editTextUsername"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/textView27"
+                    android:text="seller"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Password: "
+                    android:id="@+id/textView28"
+                    android:layout_alignBaseline="@+id/editTextPassword"
+                    android:layout_alignBottom="@+id/editTextPassword"
+                    android:layout_alignEnd="@+id/textView27"/>
+
+                <EditText
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:ems="10"
+                    android:id="@+id/editTextPassword"
+                    android:layout_below="@+id/textView27"
+                    android:layout_alignStart="@+id/editTextUsername"
+                    android:text="sellerpw"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show"
+                    android:id="@+id/checkBoxShowpassword"
+                    android:layout_column="2"
+                    android:checked="@{auth.showpassword}"
+                    android:layout_alignBottom="@+id/editTextPassword"
+                    android:layout_toEndOf="@+id/editTextUsername"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Station: "
+                    android:id="@+id/textView29"
+                    android:layout_alignBaseline="@+id/textViewClientName"
+                    android:layout_alignBottom="@+id/textViewClientName"
+                    android:layout_alignEnd="@+id/textView27"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Clientname"
+                    android:id="@+id/textViewClientName"
+                    android:layout_below="@+id/editTextPassword"
+                    android:layout_toEndOf="@+id/textView29"
+                    android:layout_alignLeft="@+id/editTextUsername"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Server1:"
+                    android:id="@+id/textView30"
+                    android:layout_alignEnd="@+id/textView27"
+                    android:layout_alignBaseline="@+id/editTextServer1"
+                    android:layout_toLeftOf="@+id/editTextServer1"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{auth.primarySrv}"
+                    android:id="@+id/editTextServer1"
+                    android:enabled="@{!auth.autoserver}"
+                    android:layout_below="@+id/textViewClientName"
+                    android:layout_toEndOf="@+id/textView29"
+                    android:layout_alignLeft="@+id/editTextUsername"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Auto"
+                    android:id="@+id/checkBoxAutoservers"
+                    android:layout_column="2"
+                    android:checked="@{auth.autoserver}"
+                    />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Server2: "
+                    android:id="@+id/textView32"
+                    android:layout_alignBaseline="@+id/editTextServer2"
+                    android:layout_alignEnd="@+id/textView27"
+                    android:layout_toLeftOf="@+id/editTextServer2"/>
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{auth.secondarySrv}"
+                    android:enabled="@{!auth.autoserver}"
+                    android:id="@+id/editTextServer2"
+                    android:layout_below="@+id/editTextServer1"
+                    android:layout_toEndOf="@+id/textView29"
+                    android:layout_alignLeft="@+id/editTextUsername"/>
+            </TableRow>
+
+        </TableLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text='@{auth.demomode?"Start Demo":"Log In"}'
+            android:id="@+id/buttonLogin"
+            android:layout_below="@+id/textViewClientName"
+            android:layout_centerHorizontal="true"
+            android:onClick="onClickLogin"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{auth.status}"
+            android:id="@+id/textViewStartupStatus"/>
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:visibility="invisible"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Demo Mode"
+            android:id="@+id/checkBoxDemomode"
+            android:checked="@{auth.demomode}"
+            android:layout_gravity="center"
+            />
+
+    </LinearLayout>
+
+</layout>

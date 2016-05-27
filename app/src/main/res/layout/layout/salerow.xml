@@ -1,0 +1,58 @@
+<LinearLayout
+    android:id="@+id/salerow"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+        <TextView
+            android:id="@+id/Time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:focusable="false"
+            android:layout_weight="1"
+            android:textSize="20dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Status"
+            android:focusable="false"
+            android:layout_weight="1"
+            android:textSize="20dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/ID"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:focusable="false"
+            android:layout_weight="1"
+            android:textSize="20dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/Product"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Product"
+            android:focusable="false"
+            android:layout_weight="1"
+            android:textSize="20dp">
+        </TextView>
+
+
+        <TextView
+            android:id="@+id/Amt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Amt"
+            android:focusable="false"
+            android:layout_weight="1"
+            android:textSize="20dp">
+        </TextView>
+</LinearLayout>

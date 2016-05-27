@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+>
+    <data>
+        <variable name="model" type="ca.thundersun.myapplication.MyViewModel"/>
+        <variable name="domain" type="ca.thundersun.myapplication.PojoDomainModel"/>
+        <variable name="handlers" type="ca.thundersun.myapplication.MyHandlers"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="ca.thundersun.myapplication.MainActivity">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Model access"
+                    android:id="@+id/textView4"/>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Model Check"
+                        android:id="@+id/checkBoxModel"
+                        android:layout_gravity="center_horizontal"
+                        android:checked="@={model.checked}"/>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@={model.stringVM}'
+                        android:ems="4"
+                        android:focusable="true"
+                        bind:addTextChangedListener="@{model.buckWatcher}"
+                        android:focusableInTouchMode="true"
+                        android:id="@+id/editTextString"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{model.stringVM}"
+                        android:ems="6"
+                        tools:text="stringVM"
+                        android:id="@+id/textView"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text='@{Float.toString(model.bucks)}'
+                        android:ems="4"
+                        android:onFocusChange="@{handlers.bucksFocusChange}"
+                        android:focusable="true"
+                        bind:addTextChangedListener="@{model.buckWatcher}"
+                        android:focusableInTouchMode="true"
+                        android:id="@+id/editTextBucks"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{String.format("$%.2f",model.bucks)}'
+                        tools:text="bucks"
+                        android:id="@+id/textViewBucks"/>
+
+                </TableRow>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="UseBucks"
+                    android:enabled="@{model.checked}"
+                    android:onClick="@{model.useBucks}"
+                    android:id="@+id/buttonBucks"/>
+
+            </TableLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Domain access"
+                    android:id="@+id/textView3"/>
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Domain Check"
+                    android:id="@+id/checkBoxDomain"
+                    android:layout_gravity="center_horizontal"
+                    android:checked="@={domain.domainChecked}"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Domain Float"
+                    android:text='@{String.format("%.2f",domain.domainBucks)}'
+                    android:id="@+id/textView2"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text='@{String.format("$%.2f",domain.domainBucks)}'
+                    tools:text="bucks"
+                    android:id="@+id/textViewDomainBucks"/>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <Button
+                        android:text="Invalidate Everything"
+                        android:id="@+id/buttonInvCheck"
+                        android:onClick="onClickInvalidate"
+                        android:layout_column="0"/>
+                </TableRow>
+
+            </TableLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

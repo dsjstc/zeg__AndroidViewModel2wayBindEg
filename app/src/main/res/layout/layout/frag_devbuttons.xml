@@ -1,0 +1,75 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:bind="http://schemas.android.com/apk/res-auto">
+    <data>
+    </data>
+
+    <LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Auth"
+            android:id="@+id/buttonAuth"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="onClickSync"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sync"
+            android:id="@+id/buttonSync"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="onClickSync"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:id="@+id/buttonUpdate"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="onClickSync"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="USBCon"
+            android:id="@+id/buttonUSBCon"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="onClickUsbConn"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRSEL"
+            android:id="@+id/buttonPrint"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="onClickPrint"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PRIMAGE"
+            android:id="@+id/buttonUsbPrintImage"
+            android:clickable="true"
+            android:enabled="true"
+            android:onClick="onClickPrintImage"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+    </layout>
