@@ -1,19 +1,23 @@
 package ca.thundersun.myapplication;
 
 import android.view.View;
-import android.widget.EditText;
 
 public class MyHandlers {
     MyViewModel myViewModel;
-    public MyHandlers(MyViewModel m) {
+    PojoDomainModel domain;
+    public MyHandlers(MyViewModel m, PojoDomainModel d) {
         myViewModel = m;
+        domain = d;
     }
 
-    public void bucksFocusChange(View v, boolean hasFocus) {
-        if(!hasFocus)
-        {
-            EditText et = (EditText) v;
-            //myViewModel.setBucks(et.getText().toString());
+    public void useBucks(View v) {
+        float bucks;
+        try {
+            bucks = myViewModel.buckWatcher.parseTextAndHighlight();
+        } catch( NumberFormatException e) {
+            return;
         }
+        domain.setDomainBucks(bucks);
+        myViewModel.notifyPropertyChanged(ca.thundersun.myapplication.BR.bucks);
     }
 }

@@ -2,7 +2,6 @@ package ca.thundersun.myapplication;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.view.View;
 
 /**
  * The viewmodel's job is to interface to the domain model.
@@ -46,15 +45,5 @@ public class MyViewModel extends BaseObservable {
         notifyPropertyChanged(ca.thundersun.myapplication.BR.bucks);
     }
     public ValidNumberWatcher buckWatcher;
-    public void useBucks(View v) {
-        float bucks;
-        try {
-            bucks = buckWatcher.parseTextAndHighlight();
-        } catch( NumberFormatException e) {
-            return;
-        }
-        domain.setDomainBucks(bucks);
-        notifyPropertyChanged(ca.thundersun.myapplication.BR.bucks);
-    }
 }
 
